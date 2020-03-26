@@ -3,17 +3,51 @@
 module Legion::Extensions::Pushover
   module Runners
     module Message
-      include Legion::Extensions::Helpers::Lex
-      def self.push(token: nil, user: nil, message: nil, **_opts)
-        require 'pushover'
-        token = 'apei7jpKBwobv3uGbWvhNzeq6hJLL2' if token.nil?
-        user_key = 'udcvYneugDDNoRnXUHF7QokFDfweiP'
-        message = ::Pushover::Message.new(token: token, user: user_key, message: message).push
-        log.warn message
-        {}
-      rescue FrozenError
+      include Legion::Extensions::Pushover::Helpers::Client
+
+      def push(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
         {}
       end
+
+      def emergency(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
+        {}
+      end
+
+      def high(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
+        {}
+      end
+
+      def normal(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
+        {}
+      end
+
+      def low(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
+        {}
+      end
+
+      def lowest(message:, title: nil, **opts)
+        result = message(message: message, title: title, **opts).push
+        raise IOError, result.errors unless result.errors.nil?
+
+        {}
+      end
+
+      include Legion::Extensions::Helpers::Lex
     end
   end
 end
