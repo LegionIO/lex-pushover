@@ -1,13 +1,13 @@
 # Legion::Extensions::Pushover
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/legion/extensions/pushover`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Legion Extension designed to connect Legion to Pushover
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'legion-extensions-pushover'
+gem 'lex-pushover'
 ```
 
 And then execute:
@@ -16,20 +16,52 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install legion-extensions-pushover
+    $ gem install lex-pushover
+
+## Adding to Legion
+You can manually install with a `gem install lex-pushover` command or by adding it into your settings with something like this
+```json
+{
+  "extensions": {
+    "pushover": {
+      "enabled": true,
+      "workers": 1,
+      "token": "___token___", # optional and can be passed in via the payload
+      "user": "user" # optional and can be passed in via the payload
+    }
+  }
+}
+```
 
 ## Usage
+There is only a single runner in this LEX. It can make the following calls 
+##### Functions
+|function|message|title|token|user|
+|---|---|---|---|---|
+|push     |Required|Optional|Optional|Optional
+|emergency|Required|Optional|Optional|Optional
+|high     |Required|Optional|Optional|Optional
+|normal   |Required|Optional|Optional|Optional
+|low      |Required|Optional|Optional|Optional
+|lowest   |Required|Optional|Optional|Optional
 
+Other optional parameteres
+```ruby
+message priority device title url url_title sound expire retry callback
+```
 
-## Development
+#### Example Payloads
+```json
+{"message": "Hello World!"}
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```json
+{"title": "Hello World!", "message": "I am a notification"}
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/legion-extensions-pushover.
+```json
+{"message": "With Creds","token": "easy as abc 123"}
+```
 
 
 ## License

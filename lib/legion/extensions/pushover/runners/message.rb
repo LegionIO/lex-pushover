@@ -13,14 +13,14 @@ module Legion::Extensions::Pushover
       end
 
       def emergency(message:, title: nil, **opts)
-        result = message(message: message, title: title, **opts).push
+        result = message(message: message, title: title, priority: 2, **opts).push
         raise IOError, result.errors unless result.errors.nil?
 
         {}
       end
 
       def high(message:, title: nil, **opts)
-        result = message(message: message, title: title, **opts).push
+        result = message(message: message, title: title, priority: 1, **opts).push
         raise IOError, result.errors unless result.errors.nil?
 
         {}
@@ -34,14 +34,14 @@ module Legion::Extensions::Pushover
       end
 
       def low(message:, title: nil, **opts)
-        result = message(message: message, title: title, **opts).push
+        result = message(message: message, title: title, priority: -1, **opts).push
         raise IOError, result.errors unless result.errors.nil?
 
         {}
       end
 
       def lowest(message:, title: nil, **opts)
-        result = message(message: message, title: title, **opts).push
+        result = message(message: message, title: title, priority: -2, **opts).push
         raise IOError, result.errors unless result.errors.nil?
 
         {}
