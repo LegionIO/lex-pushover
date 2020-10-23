@@ -24,3 +24,5 @@ Naming/FileName:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
