@@ -1,6 +1,6 @@
 # lex-pushover
 
-Pushover push notification integration for [LegionIO](https://github.com/LegionIO/LegionIO). Send notifications to Pushover-connected devices with priority levels.
+Pushover push notification integration for [LegionIO](https://github.com/LegionIO/LegionIO). Send notifications to Pushover-connected devices with configurable priority levels.
 
 ## Installation
 
@@ -8,45 +8,50 @@ Pushover push notification integration for [LegionIO](https://github.com/LegionI
 gem install lex-pushover
 ```
 
-## Functions
+Or add to your Gemfile:
 
-| Function | Parameters |
-|----------|-----------|
-| push | message (required), title, token, user |
-| emergency | message (required), title, token, user |
-| high | message (required), title, token, user |
-| normal | message (required), title, token, user |
-| low | message (required), title, token, user |
-| lowest | message (required), title, token, user |
+```ruby
+gem 'lex-pushover'
+```
 
-Additional optional parameters: `priority`, `device`, `url`, `url_title`, `sound`, `expire`, `retry`, `callback`
+## Runners
 
-### Example Payloads
+| Method | Priority | Description |
+|--------|----------|-------------|
+| `push` | default | Send a notification |
+| `emergency` | 2 | Emergency priority (requires acknowledgment) |
+| `high` | 1 | High priority |
+| `normal` | 0 | Normal priority |
+| `low` | -1 | Low priority |
+| `lowest` | -2 | Lowest priority |
+
+All methods accept: `message` (required), `title`, `token`, `user`, `device`, `url`, `url_title`, `sound`, `expire`, `retry`, `callback`.
+
+## Example Payloads
 
 ```json
 {"message": "Hello World!"}
 ```
 
 ```json
-{"title": "Hello World!", "message": "I am a notification"}
+{"title": "Alert", "message": "Disk space low", "priority": 1}
 ```
 
 ## Configuration
+
+Token and user can be set globally in Legion settings or passed per-message:
 
 ```json
 {
   "extensions": {
     "pushover": {
       "enabled": true,
-      "workers": 1,
-      "token": "your_token",
-      "user": "your_user"
+      "token": "your_app_token",
+      "user": "your_user_key"
     }
   }
 }
 ```
-
-Token and user can also be passed per-message in the payload.
 
 ## Requirements
 
