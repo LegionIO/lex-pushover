@@ -1,56 +1,28 @@
-# Legion::Extensions::Pushover
+# lex-pushover
 
-A Legion Extension designed to connect Legion to Pushover
+Pushover push notification integration for [LegionIO](https://github.com/LegionIO/LegionIO). Send notifications to Pushover-connected devices with priority levels.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'lex-pushover'
+```bash
+gem install lex-pushover
 ```
 
-And then execute:
+## Functions
 
-    $ bundle install
+| Function | Parameters |
+|----------|-----------|
+| push | message (required), title, token, user |
+| emergency | message (required), title, token, user |
+| high | message (required), title, token, user |
+| normal | message (required), title, token, user |
+| low | message (required), title, token, user |
+| lowest | message (required), title, token, user |
 
-Or install it yourself as:
+Additional optional parameters: `priority`, `device`, `url`, `url_title`, `sound`, `expire`, `retry`, `callback`
 
-    $ gem install lex-pushover
+### Example Payloads
 
-## Adding to Legion
-You can manually install with a `gem install lex-pushover` command or by adding it into your settings with something like this
-```json
-{
-  "extensions": {
-    "pushover": {
-      "enabled": true,
-      "workers": 1,
-      "token": "___token___", # optional and can be passed in via the payload
-      "user": "user" # optional and can be passed in via the payload
-    }
-  }
-}
-```
-
-## Usage
-There is only a single runner in this LEX. It can make the following calls 
-##### Functions
-|function|message|title|token|user|
-|---|---|---|---|---|
-|push     |Required|Optional|Optional|Optional
-|emergency|Required|Optional|Optional|Optional
-|high     |Required|Optional|Optional|Optional
-|normal   |Required|Optional|Optional|Optional
-|low      |Required|Optional|Optional|Optional
-|lowest   |Required|Optional|Optional|Optional
-
-Other optional parameteres
-```ruby
-message priority device title url url_title sound expire retry callback
-```
-
-#### Example Payloads
 ```json
 {"message": "Hello World!"}
 ```
@@ -59,11 +31,29 @@ message priority device title url url_title sound expire retry callback
 {"title": "Hello World!", "message": "I am a notification"}
 ```
 
+## Configuration
+
 ```json
-{"message": "With Creds","token": "easy as abc 123"}
+{
+  "extensions": {
+    "pushover": {
+      "enabled": true,
+      "workers": 1,
+      "token": "your_token",
+      "user": "your_user"
+    }
+  }
+}
 ```
 
+Token and user can also be passed per-message in the payload.
+
+## Requirements
+
+- Ruby >= 3.4
+- [LegionIO](https://github.com/LegionIO/LegionIO) framework
+- Pushover account
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+MIT

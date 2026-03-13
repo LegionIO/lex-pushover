@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'lib/legion/extensions/pushover/version'
 
 Gem::Specification.new do |spec|
@@ -8,13 +10,14 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'LEX::Pushover'
   spec.description   = 'Used to connect Legion to Pushover'
-  spec.homepage      = 'https://bitbucket.org/legion-io/lex-pushover'
+  spec.homepage      = 'https://github.com/LegionIO/lex-pushover'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
+  spec.required_ruby_version = '>= 3.4'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://bitbucket.org/legion-io/lex-pushover'
-  spec.metadata['changelog_uri'] = 'https://bitbucket.org/legion-io/lex-pushover/src/master/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/LegionIO/lex-pushover'
+  spec.metadata['changelog_uri'] = 'https://github.com/LegionIO/lex-pushover/blob/main/CHANGELOG.md'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

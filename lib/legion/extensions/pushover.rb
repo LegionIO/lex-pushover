@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'legion/extensions/pushover/version'
 
 module Legion
