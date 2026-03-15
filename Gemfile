@@ -2,5 +2,14 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in legion-extensions-pushover.gemspec
 gemspec
+
+gem 'bundler'
+gem 'codecov'
+gem 'rake', '~> 12.0'
+gem 'rspec', '~> 3.0'
+gem 'rspec_junit_formatter'
+gem 'rubocop'
+gem 'rubocop-md'
+gem 'rubocop-performance'
+gem 'rubocop-rspec'
