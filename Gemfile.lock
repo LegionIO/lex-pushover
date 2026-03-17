@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lex-pushover (0.1.3)
+    lex-pushover (0.2.0)
       pushover (>= 3.0.0)
 
 GEM
