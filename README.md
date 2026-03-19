@@ -53,11 +53,23 @@ Token and user can be set globally in Legion settings or passed per-message:
 }
 ```
 
+## Standalone Client
+
+```ruby
+require 'legion/extensions/pushover'
+
+client = Legion::Extensions::Pushover::Client.new(user_key: 'uXXX', api_token: 'aXXX')
+client.push(message: 'Deploy complete')
+client.high(message: 'Disk usage above 90%', title: 'Alert')
+```
+
+Credentials passed to `Client.new` are merged with per-call kwargs; per-call values take precedence.
+
 ## Requirements
 
 - Ruby >= 3.4
-- [LegionIO](https://github.com/LegionIO/LegionIO) framework
-- Pushover account
+- Pushover account (user key + API token)
+- [LegionIO](https://github.com/LegionIO/LegionIO) framework (optional for standalone client)
 
 ## License
 

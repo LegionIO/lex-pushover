@@ -81,6 +81,8 @@ Token and user can be set globally in Legion settings or passed per-message in t
 
 ## Development
 
+15 specs total.
+
 ```bash
 bundle install
 bundle exec rspec
