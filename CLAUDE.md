@@ -10,7 +10,7 @@ Legion Extension that connects LegionIO to the Pushover push notification servic
 
 **GitHub**: https://github.com/LegionIO/lex-pushover
 **License**: MIT
-**Version**: 0.2.0
+**Version**: 0.2.1
 
 ## Architecture
 
